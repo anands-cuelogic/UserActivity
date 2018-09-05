@@ -6,9 +6,12 @@ import passport from 'passport';
 
 //Load User Module
 import userIndex from './User/index';
+//Load UserActivity Module
+import userActivityIndex from './UsersActivity/index';
 //DB config
 import db from './config/keys';
-
+//DBBackup & Restore Module
+import backupIndex from './Backup/index';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -28,6 +31,8 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 
 app.use('/user', userIndex);
+app.use('/userActivity', userActivityIndex);
+app.use('/db', backupIndex);
 
 app.listen(port, () => {
     console.log(`Server is up on ${port}`);

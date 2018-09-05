@@ -2,8 +2,8 @@ import mongoose from 'mongoose';
 
 const UserActivitySchema = mongoose.Schema({
     userId: {
-        type: String,
-        required: true
+        type: mongoose.Schema.ObjectId,
+        ref: 'User'
     },
     IP: {
         type: String,
@@ -15,7 +15,7 @@ const UserActivitySchema = mongoose.Schema({
     },
     date: {
         type: Date,
-        required: true
+        default: Date.now
     }
 });
 
