@@ -119,14 +119,16 @@ class UserController {
     }
 
     getAllUser(req, res) {
+        let usersRes = [];
         UserModel.find()
             .then(user => {
                 user.forEach(u => {
-                    res.json({
-                        Name: u.first + " " + u.lastName,
-                        CreatedAt: u.CreatedAt
+                    usersRes.push({
+                        Name: u.firstName + " " + u.lastName,
+                        CreatedAt: u.createdAt
                     });
                 });
+                res.json(usersRes);
             })
             .catch(err => {});
     }

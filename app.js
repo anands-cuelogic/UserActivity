@@ -29,6 +29,7 @@ app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
 }));
 app.use(passport.initialize());
 require('./config/passport')(passport);
+require('./config/cache');
 
 app.use('/user', userIndex);
 app.use('/userActivity', userActivityIndex);

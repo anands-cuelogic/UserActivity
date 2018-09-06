@@ -7,9 +7,7 @@ import UserController from './Controller/UserController';
 //const app = express();
 const router = express.Router();
 
-router.get('/', passport.authenticate('jwt', {
-        session: false
-    }), UserController.getAllUser)
+router.get('/', UserController.getAllUser)
     .post('/', UserController.createUser)
     .post('/login', UserController.login)
     .get('/search/:email', passport.authenticate('jwt', {
