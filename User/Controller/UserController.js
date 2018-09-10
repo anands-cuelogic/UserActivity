@@ -120,7 +120,9 @@ class UserController {
 
     getAllUser(req, res) {
         let usersRes = [];
-        UserModel.find()
+        UserModel.find().cache({
+            key : 'users'
+        })
             .then(user => {
                 user.forEach(u => {
                     usersRes.push({
